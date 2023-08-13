@@ -1,189 +1,198 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_nada_ashraf_mohammad/Screens/category_screen.dart';
 
-class loginScreen extends StatelessWidget {
-  const loginScreen({super.key});
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 53, 129, 55),
-       body: ListView(
-        children: [
-            Image(
-                image: AssetImage('images/logo.png'),
-                width: MediaQuery.of(context).size.width * 0.6,
-                height: MediaQuery.of(context).size.height * 0.3,
+        // backgroundColor: Colors.green,
+        body: Stack(
+      // unbounded widget
+      alignment: Alignment.bottomCenter,
+      children: [
+        Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            width: MediaQuery.of(context).size.width,
+            color: const Color.fromARGB(255, 27, 154, 31),
+            child: Center(
+              child: Image.asset(
+                "images/logo.png",
+                height: 100,
               ),
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.all(20),
+          height: MediaQuery.of(context).size.height * 2 / 3, // width: 50,
+          width: double.infinity,
 
-              Stack(children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 230, 232, 230),
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(20.0),
-                        bottomLeft: Radius.circular(0.0)),
-                  ),
-                  width: MediaQuery.of(context).size.width, 
-                  height: MediaQuery.of(context).size.height * 0.7,
+          decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 226, 216, 216),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
 
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 30),
+          child: Column(children: [
+            Text(
+              "Login",
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+
+            // for (int i = 0;
+            //     i < 5;
+            //     i++) // For Loop: used for repeating same code
+            TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.person),
+                hintText: "User name",
+                // errorBorder: ,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Color.fromARGB(255, 36, 4, 240), width: 2),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                // border: ,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                // border:
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.lock),
+                suffixIcon: Icon(Icons.visibility),
+                hintText: "Password",
+                // errorBorder: ,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Color.fromARGB(255, 36, 4, 240), width: 2),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                // border: ,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                // border:
+              ),
+            ),
+
+            SizedBox(
+              height: 8,
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("New to quiz app?"),
+                // SizedBox(
+                //   width: 4,
+                // ),
+                InkWell(
+                  onTap: () {
+                    print("Hello we are ITI");
+                  },
                   child: Text(
-                    textAlign: TextAlign.center,
-
-                    'Login',
-                    style: TextStyle(fontWeight: FontWeight.bold , fontSize: 40),
+                    "Register",
+                    style: TextStyle(
+                        color: Colors.green, fontWeight: FontWeight.bold),
                   ),
-                     ),
-                    
-                     Column(
-                      children: [
-                         SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.13,
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 40),
-                      alignment: Alignment.center,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 249, 248, 248),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                              width: 1,
-                              color: Color.fromARGB(255, 185, 183, 183))),
-                              
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0.1),
-                        
-                        child: TextField(
-                          
-                          //scrollPadding: EdgeInsets.all(10.0),
-                          style: TextStyle(fontSize: 17.0),
-                          decoration: InputDecoration(
-                             
-                            //contentPadding: EdgeInsets.symmetric(vertical: 90,horizontal: 90),
-                            prefixIcon: Icon(
-                              Icons.person,
-                              size: 25,
-                            ),
-                            border: OutlineInputBorder(),
-                            labelText: 'Username',
-                          ),
-                        ),
-                      ),
+                )
+              ],
+            ),
 
-                    ),
+            SizedBox(
+              height: 30,
+            ),
 
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => CategoryScreen(),
+                  ),
+                );
+              },
+              child: Text("Login"),
+              style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        25.0), // Adjust the radius as needed
+                  ),
+                  backgroundColor: Colors.green,
+                  elevation: 10,
+                  minimumSize: Size(130, 40)),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Icon(
+              Icons.fingerprint,
+              color: Colors.blue,
+              size: 50,
+            ),
+            Text(
+              "Touch ID",
+              style: TextStyle(color: Colors.grey),
+            ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  children: [
+                    Checkbox(value: true, onChanged: (value) {}),
+                    Text("Remember me"),
+                  ],
+                ),
 
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 40),
-                      alignment: Alignment.center,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 249, 248, 248),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                              width: 1,
-                              color: Color.fromARGB(255, 185, 183, 183))),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0.1),
-                        child: TextField(
-                            style: TextStyle(fontSize: 17.0),
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.lock,
-                                size: 25,
-                              ),
-                              border: OutlineInputBorder(),
-                              labelText: 'Password',
-                            ),
-                            obscureText: true),
-                      ),
-                    ),
-                   
-                   SizedBox(height: 10),
-                    
-                    Container(
-                    alignment: Alignment.centerRight,  
-                    margin: EdgeInsets.symmetric(horizontal: 67),
-                    padding: EdgeInsets.symmetric(horizontal: 0.8),
-                    child: Text('New to quiz app?',style: TextStyle(
-                      
-                            color: Colors.black,)
-                    ),
+                // Spacer(),
+                InkWell(
+                  onTap: () {
+                    print("Hello we are ITI");
+                  },
+                  child: Text(
+                    "Forget password",
+                    style: TextStyle(
+                        color: Colors.green, fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            )
+          ]),
+        )
+      ],
+    )
 
-                    ),
-
-                    SizedBox(
-                      height: 40,
-                    ),
-
-                    Container(
-                       margin: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // do something
-                      },
-                      child: Text('Login'),
-                      
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          //minimumSize: Size(777, 899),
-                          padding: const EdgeInsets.symmetric(horizontal: 60),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30),),
-                          ),
-                          
-                    ),
-                    ),
-
-                    Image(
-                image: AssetImage('images/id1.png'),
-                //width: MediaQuery.of(context).size.width * 0.6,
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-                  
-
-                    Text('Use touch ID',style: TextStyle(
-                            color: Colors.grey,)
-                    ),
-                    
-                    Container(
-                    alignment: Alignment.centerLeft,  
-                    margin: EdgeInsets.symmetric(horizontal: 67, vertical: 20),
-                    padding: EdgeInsets.symmetric(horizontal: 0.8),
-                    child: Text('Remember me',style: TextStyle(
-                      
-                            color: Colors.black,)
-                    ),
-
-                    )
-                    
-
-                      ],
-                     )
-
-                      ],
-                      
-                      )
-              
-                    
-                    
-
-                     
-                     
-                      
-        ],
-       )
-             
-
-
-      //       ]
-      //     ),
-      // ),
-    );
+        // Container(
+        //   // color: Colors.green,
+        //   child: Column(children: [
+        //     Container(
+        //       // color: Colors.green,
+        //       height: MediaQuery.of(context).size.height * 1 / 3,
+        //     ),
+        //     Container(
+        //       decoration: BoxDecoration(
+        //           color: Color.fromARGB(255, 245, 232, 232),
+        //           borderRadius: BorderRadius.vertical(top: Radius.circular(40))),
+        //       height: MediaQuery.of(context).size.height * 2 / 3,
+        //     )
+        //   ]),
+        // ),
+        );
   }
 }
