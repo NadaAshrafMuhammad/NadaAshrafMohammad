@@ -14,238 +14,238 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         // backgroundColor: Colors.green,
-        body: Container( width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height,
-          child: Stack(
+        backgroundColor: const Color.fromARGB(255, 53, 129, 55),
+       
+        
+           body: ListView(
+             children: [
+               Image(
+                    image: AssetImage('images/logo.png'),
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    height: MediaQuery.of(context).size.height * 0.23,
+                  ),
+            
+          
+        
+          Stack(
+            
               // unbounded widget
               alignment: Alignment.bottomCenter,
               children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width,
-              color: const Color.fromARGB(255, 27, 154, 31),
-              child: Center(
-                child: Image.asset(
-                  "images/logo.png",
-                  height: 100,
-                ),
-              ),
-            ),
-          ),
-          SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              height: MediaQuery.of(context).size.height * 2 / 3, // width: 50,
-              width: double.infinity,
-            
-              decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 226, 216, 216),
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
-            
-              child: Form(
-                   key: _formKey, 
-                child: Column(children: [
-                  Text(
-                    "Login",
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-              
-                  // for (int i = 0;
-                  //     i < 5;
-                  //     i++) // For Loop: used for repeating same code
-                  TextFormField(
-                      
-                     validator: (value) {  
-                  if(value!.isEmpty){
-                  return 'user name must not be empty';  }    
-                  if (RegExp('^[A-Z][a-z0-9_-]{9,}\$').hasMatch(value.toString())==false) {  
-                    return 'Please enter valid user name';  }
-                   
-                 
-                  
-                  // return null;  
-                }, 
                 
+         
+          Container(
+            padding: EdgeInsets.all(20),
+            height: MediaQuery.of(context).size.height * 0.73, // width: 50,
+            width: double.infinity,
+          
+            decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 226, 216, 216),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+          
+            child: Form(
+                 key: _formKey, 
+              child: Column(children: [
+                Text(
+                  "Login",
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
             
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      hintText: "User name",
-                      // errorBorder: ,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color.fromARGB(255, 36, 4, 240), width: 2),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      // border: ,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      // border:
-                    )
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                     validator: (value) {  
-                  if(value!.isEmpty){
-                  return 'Password must not be empty';  }    
-                  if (RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\\\$!%*?&])[A-Za-z\\d@\\\$!%*?&]{10,}\$').hasMatch(value.toString())==false) {  
-                    return 'Please enter valid Password';  }
-                   
+                // for (int i = 0;
+                //     i < 5;
+                //     i++) // For Loop: used for repeating same code
+                TextFormField(
+                    
+                   validator: (value) {  
+                if(value!.isEmpty){
+                return 'user name must not be empty';  }    
+                if (RegExp('^[A-Z][a-z0-9_-]{8,}\$').hasMatch(value.toString())==false) {  
+                  return 'Please enter valid user name';  }
                  
-                  
-                  // return null;  
-                }, 
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
-                      suffixIcon: Icon(Icons.visibility),
-                      hintText: "Password",
-                      // errorBorder: ,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color.fromARGB(255, 36, 4, 240), width: 2),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      // border: ,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      // border:
+               
+                
+                // return null;  
+              }, 
+              
+          
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person),
+                    hintText: "User name",
+                    // errorBorder: ,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 36, 4, 240), width: 2),
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                  ),
-            
-                  SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                     validator: (value) {  
-                  if(value!.isEmpty){
-                  return 'Email must not be empty';  }    
-                  if (RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-z]+\$').hasMatch(value.toString())==false) {  
-                    return 'Please enter valid Email';  }
-                   
-                 
-                  
-                  // return null;  
-                }, 
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email),
-                      
-                      hintText: "Email",
-                      // errorBorder: ,
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color.fromARGB(255, 36, 4, 240), width: 2),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      // border: ,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      // border:
+                    // border: ,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                  ),
-              
-                  SizedBox(
-                    height: 8,
-                  ),
-              
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text("New to quiz app?"),
-                      // SizedBox(
-                      //   width: 4,
-                      // ),
-                      InkWell(
-                        onTap: () {
-                          print("Hello we are ITI");
-                        },
-                        child: Text(
-                          "Register",
-                          style: TextStyle(
-                              color: Colors.green, fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
-                  ),
-              
-                  SizedBox(
-                    height: 30,
-                  ),
-              
-                  ElevatedButton(
-                    onPressed: () {
-                      if(_formKey.currentState!.validate())
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) => CategoryScreen(),
-                        ),
-                      );
-                    },
-                    child: Text("Login"),
-                    style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              25.0), // Adjust the radius as needed
-                        ),
-                        backgroundColor: Colors.green,
-                        elevation: 10,
-                        minimumSize: Size(130, 40)),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Icon(
-                    Icons.fingerprint,
-                    color: Colors.blue,
-                    size: 50,
-                  ),
-                  Text(
-                    "Touch ID",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    // crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Row(
-                        children: [
-                          Checkbox(value: true, onChanged: (value) {}),
-                          Text("Remember me"),
-                        ],
-                      ),
-              
-                      // Spacer(),
-                      InkWell(
-                        onTap: () {
-                          print("Hello we are ITI");
-                        },
-                        child: Text(
-                          "Forget password",
-                          style: TextStyle(
-                              color: Colors.green, fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
+                    // border:
                   )
-                ]),
-              ),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                TextFormField(
+                   validator: (value) {  
+                if(value!.isEmpty){
+                return 'Password must not be empty';  }    
+                if (RegExp('^(?=.*[0-9])|(?=.*[a-z])|(?=.*[A-Z])|(?=.*\\d)|(?=.*[@\\\$!%*?&])|[A-Za-z\\d@\\\$!%*?&]{10,}\$').hasMatch(value.toString())==false) {  
+                  return 'Please enter valid Password';  }
+                 
+               
+                
+                // return null;  
+              }, 
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: Icon(Icons.visibility),
+                    hintText: "Password",
+                    // errorBorder: ,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 36, 4, 240), width: 2),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    // border: ,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    // border:
+                  ),
+                ),
+          
+                SizedBox(
+                  height: 12,
+                ),
+                TextFormField(
+                   validator: (value) {  
+                if(value!.isEmpty){
+                return 'Email must not be empty';  }    
+                if (RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-z]+\$').hasMatch(value.toString())==false) {  
+                  return 'Please enter valid Email';  }
+                 
+               
+                
+                // return null;  
+              }, 
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.email),
+                    
+                    hintText: "Email",
+                    // errorBorder: ,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 36, 4, 240), width: 2),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    // border: ,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    // border:
+                  ),
+                ),
+            
+                SizedBox(
+                  height: 8,
+                ),
+            
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("New to quiz app?"),
+                    // SizedBox(
+                    //   width: 4,
+                    // ),
+                    InkWell(
+                      onTap: () {
+                        print("Hello we are ITI");
+                      },
+                      child: Text(
+                        "Register",
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+            
+                SizedBox(
+                  height: 30,
+                ),
+            
+                ElevatedButton(
+                  onPressed: () {
+                    if(_formKey.currentState!.validate())
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => CategoryScreen(),
+                      ),
+                    );
+                  },
+                  child: Text("Login"),
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            25.0), // Adjust the radius as needed
+                      ),
+                      backgroundColor: Colors.green,
+                      elevation: 10,
+                      minimumSize: Size(130, 40)),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Icon(
+                  Icons.fingerprint,
+                  color: Colors.blue,
+                  size: 50,
+                ),
+                Text(
+                  "Touch ID",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(value: true, onChanged: (value) {}),
+                        Text("Remember me"),
+                      ],
+                    ),
+            
+                    // Spacer(),
+                    InkWell(
+                      onTap: () {
+                        print("Hello we are ITI");
+                      },
+                      child: Text(
+                        "Forget password",
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                )
+              ]),
             ),
           )
               ],
             ),
-        )
+             ],
+           )
 
         // Container(
         //   // color: Colors.green,
