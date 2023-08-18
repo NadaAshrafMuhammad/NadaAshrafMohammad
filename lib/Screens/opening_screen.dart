@@ -54,7 +54,7 @@ class OpeningScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
-                              const LoginScreen(),
+                               LoginScreen(),
                         ),
                       );
             }, child: Text("Start"),style: ElevatedButton.styleFrom(backgroundColor: Colors.green),),
