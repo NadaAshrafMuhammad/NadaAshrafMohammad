@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_nada_ashraf_mohammad/Data/quiz_app_data.dart';
 import 'package:quiz_app_nada_ashraf_mohammad/Screens/category_screen.dart';
 
 
@@ -7,7 +8,7 @@ class LoginScreen extends StatelessWidget {
    LoginScreen({super.key});
 
     final _formKey = GlobalKey<FormState>(); 
-    RegExp regex =new RegExp('');
+   // RegExp regex =new RegExp('');
    
 
   @override
@@ -57,19 +58,59 @@ class LoginScreen extends StatelessWidget {
                 // for (int i = 0;
                 //     i < 5;
                 //     i++) // For Loop: used for repeating same code
-                TextFormField(
+
+                 TextFormField(
+                  
+                   validator: (value) {  
+                if(value!.isEmpty){
+                return 'Email must not be empty';  }    
+                if (RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-z]+\$').hasMatch(value.toString())==false) {  
+                  return 'Please enter valid Email';  }
+                 
+               
+                
+                // return null;  
+              }, 
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.email),
                     
+                    hintText: "Email",
+                    // errorBorder: ,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color.fromARGB(255, 36, 4, 240), width: 2),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    // border: ,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    // border:
+                  ),
+                ),
+            
+                SizedBox(
+                  height: 8,
+                ),
+
+
+
+
+
+                TextFormField(
+                   
                    validator: (value) {  
                 if(value!.isEmpty){
                 return 'user name must not be empty';  }    
-                if (RegExp('^[A-Z][a-z0-9_-]{8,}\$').hasMatch(value.toString())==false) {  
+                if (RegExp('^[A-Z][a-zA-Z0-9_-]{8,}\$').hasMatch(value.toString())==false) {  
                   return 'Please enter valid user name';  }
                  
                
                 
                 // return null;  
               }, 
-              
+              controller: Name, 
           
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person),
@@ -124,39 +165,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 12,
                 ),
-                TextFormField(
-                   validator: (value) {  
-                if(value!.isEmpty){
-                return 'Email must not be empty';  }    
-                if (RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-z]+\$').hasMatch(value.toString())==false) {  
-                  return 'Please enter valid Email';  }
-                 
                
-                
-                // return null;  
-              }, 
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email),
-                    
-                    hintText: "Email",
-                    // errorBorder: ,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                          color: Color.fromARGB(255, 36, 4, 240), width: 2),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    // border: ,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    // border:
-                  ),
-                ),
-            
-                SizedBox(
-                  height: 8,
-                ),
             
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -183,8 +192,13 @@ class LoginScreen extends StatelessWidget {
                 ),
             
                 ElevatedButton(
+                  
                   onPressed: () {
+                    
                     if(_formKey.currentState!.validate())
+                   
+
+
                     Navigator.push(
                       context,
                       MaterialPageRoute<void>(
@@ -264,4 +278,5 @@ class LoginScreen extends StatelessWidget {
         // ),
         );
   }
+  
 }
