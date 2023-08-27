@@ -37,10 +37,10 @@ List<Map<String,dynamic>> DataBase = [
   {
     "question" : "Which team has won the most Super Bowl titles in NFL history?",
     "answers" : [
-      {"ans": "Green Bay Packers", "score" : 4},
-      {"ans": "New England Patriots", "score" : 6},
-      {"ans": "San Francisco 49ers", "score" : 5},
-      {"ans": "Pittsburgh Steelers", "score" : 6}
+      {"ans": "Green Bay Packers", "score" : 0},
+      {"ans": "New England Patriots", "score" : 0},
+      {"ans": "San Francisco 49ers", "score" : 0},
+      {"ans": "Pittsburgh Steelers", "score" : 1}
     ]
   },
   {
