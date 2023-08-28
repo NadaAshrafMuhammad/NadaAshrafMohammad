@@ -4,13 +4,29 @@ import 'package:quiz_app_nada_ashraf_mohammad/Screens/category_screen.dart';
 
 
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
    LoginScreen({super.key});
 
-    final _formKey = GlobalKey<FormState>(); 
-   // RegExp regex =new RegExp('');
-   
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
+class _LoginScreenState extends State<LoginScreen>with TickerProviderStateMixin {
+    final _formKey = GlobalKey<FormState>(); 
+    late final AnimationController _controller3;
+    late final AnimationController _controller4;
+
+    @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller3 =AnimationController(vsync: this,duration: Duration(seconds: 3));
+    _controller3.forward();
+    _controller4=AnimationController(vsync: this,duration: Duration(seconds: 5));
+    _controller4.forward();
+  }
+
+   // RegExp regex =new RegExp('');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +36,14 @@ class LoginScreen extends StatelessWidget {
         
            body: ListView(
              children: [
-               Image(
-                    image: AssetImage('images/logo.png'),
-                    width: MediaQuery.of(context).size.width * 0.3,
-                    height: MediaQuery.of(context).size.height * 0.23,
-                  ),
+               SlideTransition(
+                position: Tween<Offset>(begin:Offset(0,-3) ,end:Offset(0, 0) ).animate(_controller3),
+                 child: Image(
+                      image: AssetImage('images/logo.png'),
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: MediaQuery.of(context).size.height * 0.23,
+                    ),
+               ),
             
           
         
@@ -219,10 +238,13 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 15,
                 ),
-                Icon(
-                  Icons.fingerprint,
-                  color: Colors.blue,
-                  size: 50,
+                FadeTransition(
+                  opacity: _controller4,
+                  child: Icon(
+                    Icons.fingerprint,
+                    color: Colors.blue,
+                    size: 50,
+                  ),
                 ),
                 Text(
                   "Touch ID",
@@ -278,5 +300,4 @@ class LoginScreen extends StatelessWidget {
         // ),
         );
   }
-  
 }

@@ -39,6 +39,9 @@ dependencies:
   firebase_core: ^2.15.1
   firebase_messaging: ^14.6.7
   flutter_local_notifications: ^15.1.1
+  lottie: ^2.6.0
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +69,8 @@ flutter:
   assets:
     - images/
     - images/result.png
+    - images/animation_llunoalj.json
+    - images/animation_lluo3msy.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

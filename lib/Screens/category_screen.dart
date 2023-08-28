@@ -3,11 +3,31 @@ import 'package:flutter/services.dart';
 import 'package:quiz_app_nada_ashraf_mohammad/Data/quiz_app_data.dart';
 import 'package:quiz_app_nada_ashraf_mohammad/Screens/quizscreen.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   CategoryScreen({super.key});
-  
+
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> with SingleTickerProviderStateMixin{
+
+ late final AnimationController _controller5;
+ @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     _controller5 = AnimationController(
+      duration:  Duration(seconds: 3),
+      vsync: this,
+    );
+    _controller5.forward();
+  }
+
   final Map dataset={};
+
   List quizName = ["Sport Test", "History Test", "Geography Test","Mathematics Test","IQ Test","Arts Test"];
+
   List quizColor = [const Color.fromARGB(255, 164, 239, 167), Color.fromARGB(255, 18, 149, 219), Color.fromARGB(255, 224, 171, 247),Color.fromARGB(255, 77, 25, 168),Color.fromARGB(255, 230, 156, 38),Color.fromARGB(255, 3, 190, 232)];
 
   @override
@@ -56,7 +76,10 @@ class CategoryScreen extends StatelessWidget {
                     },
                   child: Container(
                     child: Center(
-                      child: Text(quizName[i]),
+                      child: ScaleTransition(
+                        
+                        scale: _controller5,
+                        child: Text(quizName[i])),
                     ),
                     decoration: BoxDecoration(
                         color: quizColor[i],

@@ -3,9 +3,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app_nada_ashraf_mohammad/Screens/login_screen.dart';
 
 
-class OpeningScreen extends StatelessWidget {
+class OpeningScreen extends StatefulWidget {
   const OpeningScreen({super.key});
 
+  @override
+  State<OpeningScreen> createState() => _OpeningScreenState();
+}
+
+class _OpeningScreenState extends State<OpeningScreen>with SingleTickerProviderStateMixin {
+
+  late final AnimationController _controller2;
+  @override
+  void initState() {
+    super.initState();
+    _controller2=AnimationController(vsync: this,duration: Duration(seconds: 4));
+    _controller2.forward();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,24 +39,34 @@ class OpeningScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.3,
           ),
 
-          Image.asset("images/result.png",
-          height: MediaQuery.of(context).size.height * 0.2,
+          SlideTransition(
+            position: Tween<Offset>(begin:Offset(0, -3) ,end:Offset(0, 0) ).animate(_controller2),
+            child: Image.asset("images/result.png",
+            height: MediaQuery.of(context).size.height * 0.2,
+            ),
           ),
 
-          Text(
-            "ITI Quiz App",
-            style: GoogleFonts.pacifico(fontSize: 30, color: Colors.yellow),
+          FadeTransition(
+            opacity: _controller2,
+            child: Column(
+              children: [
+                Text(
+                  "ITI Quiz App",
+                  style: GoogleFonts.pacifico(fontSize: 30, color: Colors.yellow),
+                  ),
+          
+                SizedBox(
+                    height: 20,
+                  ),
+          
+          
+                Text(
+                    "We are Creative, enjoy our App",
+                    style: GoogleFonts.dancingScript(fontSize: 20, color: Colors.white),
+                  ),
+              ],
             ),
-
-          SizedBox(
-              height: 20,
-            ),
-
-
-          Text(
-              "We are Creative, enjoy our App",
-              style: GoogleFonts.dancingScript(fontSize: 20, color: Colors.white),
-            ),  
+          ),  
           Spacer(),
 
           Container(
